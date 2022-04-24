@@ -1,0 +1,160 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+a, input{
+  box-sizing: border-box;
+}
+
+button{
+  background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor: pointer;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.App{
+  padding:30px;
+}
+
+/* Toggle */
+
+.toggle_container{
+  background: #bebdbd;
+  border-radius:30px;
+  border:2px solid #bebdbd;
+  width:300px;
+  display:flex;
+  height: 40px;
+  position:relative;
+}
+.toggle_container li{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  position: absolute;
+  top:50%;
+  height:100%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color:#7c7b7b;
+  font-weight: 700;
+}
+
+.toggle_container li.left{
+  left:0;
+}
+.toggle_container li.right{
+  right:0;
+}
+.focus_left .left, .focus_right .right{
+  color:#000;
+}
+
+.toggle_container:before{
+  content: '';
+  display:block;
+  position: absolute;
+  background: #fff;
+  border-radius: 30px;
+  width:50%;
+  height:100%;
+  transition: left 0.3s;
+}
+
+.focus_left:before{
+  left:0%;
+}
+.focus_right:before{
+  left:50%;
+}
+
+/* Input */
+
+.login_form{
+  padding-top: 50px;
+}
+.login_form .input-box{
+  margin-bottom:20px;
+  width:250px;
+}
+
+.login_form input{
+  width:100%; padding:10px 40px 10px 10px; border:1px solid #292828; border-radius: 3px;
+}
+.login_form label{
+ font-size:14px;
+ padding-bottom:5px;
+ display:block;
+}
+.input-box{
+  position: relative;
+  
+}
+
+.input-box .icon{
+  position: absolute;
+  top:50%;
+  transform:translateY(-50%);
+  right: 20px;
+  font-size:0;
+
+  background: no-repeat center/100%;
+}
+
+.input-box .icon_check{
+  opacity: 0.4;
+  width:15px;
+  height:15px;
+  background-image: url('./images/circle-check-solid.svg');
+}
+.input-box .icon_check.checked{
+  opacity: 1
+}
+.input-box .icon_view{
+  width:20px;
+  height:20px;
+  background-image: url('./images/eye-slash-solid.svg');
+}
+.input-box .icon_view.view{
+  background-image: url('./images/eye-solid.svg');
+}
