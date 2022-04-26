@@ -158,3 +158,46 @@ table {
 .input-box .icon_view.view{
   background-image: url('./images/eye-solid.svg');
 }
+
+/* Tab */
+.tab_container{
+  display: flex;
+  width:450px;
+  padding:0 10px;
+  border-bottom:2px solid #dfdfdf;
+}
+.tab_container .button_wrap{
+  position: relative;
+  width:100%;
+}
+
+.tab_container button{
+  text-align: center;
+  width:33.33%;
+  font-weight:700;
+  padding:15px;
+  color:#9e9d9d;
+}
+.tab_container button.active{
+  color:#000;
+  font-weight: bold;
+}
+
+
+.tab_container .tab_slider{
+  position: absolute;
+  height: 2px;
+  width: 33.33%;
+  top:100%;
+  left:0%; 
+  background: #05c9a8;
+  transition: 0.2s left ease-in-out;
+}
+
+/* .tab_container .active_2:before{
+  left:33.33%;
+}
+.tab_container .active_3:before{
+  left:66.66%;
+} */
+

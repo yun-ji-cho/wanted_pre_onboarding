@@ -15,10 +15,10 @@ class Toggle extends Component {
   render(){
     return (
       <ul className={`toggle_container ${this.state.activeTarget}`} onClick={this.onChangeToggle}>
-        <li className="left" >
+        <li className="left">
           기본
         </li>
-        <li className="right" >
+        <li className="right">
           상세
         </li>
       </ul>
