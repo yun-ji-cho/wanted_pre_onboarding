@@ -2,19 +2,22 @@ import React, {Component} from 'react';
 
 class Toggle extends Component {
   state = {
-    activeTarget : 'focus_left'
+    activeTarget : '',
   };
 
   onChangeToggle = (e) => {
     if(e.target === e.currentTarget) return;
-    const targetElemClass = e.target.className;
-    if(this.state.activeTarget === 'focus_left' && targetElemClass !== 'left') this.setState({activeTarget : 'focus_right'});
-    else if(this.state.activeTarget === 'focus_right' && targetElemClass !== 'right')this.setState({activeTarget : 'focus_left'});
+    
+    const targetClassName = e.target.className;
+    if(!this.state.activeTarget && targetClassName !== 'left') this.setState({activeTarget : 'switch'});
+    else if(this.state.activeTarget && targetClassName !== 'right')this.setState({activeTarget : ''});
   };
 
   render(){
     return (
-      <ul className={`toggle_container ${this.state.activeTarget}`} onClick={this.onChangeToggle}>
+      <ul 
+        className={`toggle_container ${this.state.activeTarget}`} onClick={this.onChangeToggle}
+      >
         <li className="left">
           기본
         </li>

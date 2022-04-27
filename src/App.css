@@ -51,13 +51,13 @@ table {
 	border-spacing: 0;
 }
 
+
 .App{
   padding:30px;
 }
-
-/* Toggle */
-
+/*---------------  Toggle --------------- */
 .toggle_container{
+  margin-bottom:100px;
   background: #bebdbd;
   border-radius:30px;
   border:2px solid #bebdbd;
@@ -79,17 +79,20 @@ table {
   color:#7c7b7b;
   font-weight: 700;
 }
-
-.toggle_container li.left{
+.toggle_container .left{
   left:0;
-}
-.toggle_container li.right{
-  right:0;
-}
-.focus_left .left, .focus_right .right{
   color:#000;
 }
-
+.toggle_container .right{
+  right:0;
+}
+.switch .left{
+  color:#000;
+  color:#7c7b7b;
+}
+.switch .right{
+  color:#000;
+}
 .toggle_container:before{
   content: '';
   display:block;
@@ -98,69 +101,17 @@ table {
   border-radius: 30px;
   width:50%;
   height:100%;
+  left:0;
   transition: left 0.3s;
 }
-
-.focus_left:before{
-  left:0%;
-}
-.focus_right:before{
+.switch:before{
   left:50%;
 }
 
-/* Input */
 
-.login_form{
-  padding-top: 50px;
-}
-.login_form .input-box{
-  margin-bottom:20px;
-  width:250px;
-}
-
-.login_form input{
-  width:100%; padding:10px 40px 10px 10px; border:1px solid #292828; border-radius: 3px;
-}
-.login_form label{
- font-size:14px;
- padding-bottom:5px;
- display:block;
-}
-.input-box{
-  position: relative;
-  
-}
-
-.input-box .icon{
-  position: absolute;
-  top:50%;
-  transform:translateY(-50%);
-  right: 20px;
-  font-size:0;
-
-  background: no-repeat center/100%;
-}
-
-.input-box .icon_check{
-  opacity: 0.4;
-  width:15px;
-  height:15px;
-  background-image: url('./images/circle-check-solid.svg');
-}
-.input-box .icon_check.checked{
-  opacity: 1
-}
-.input-box .icon_view{
-  width:20px;
-  height:20px;
-  background-image: url('./images/eye-slash-solid.svg');
-}
-.input-box .icon_view.view{
-  background-image: url('./images/eye-solid.svg');
-}
-
-/* Tab */
+/*---------------  Tab --------------- */
 .tab_container{
+  margin-bottom: 100px;
   display: flex;
   width:450px;
   padding:0 10px;
@@ -170,7 +121,6 @@ table {
   position: relative;
   width:100%;
 }
-
 .tab_container button{
   text-align: center;
   width:33.33%;
@@ -182,8 +132,6 @@ table {
   color:#000;
   font-weight: bold;
 }
-
-
 .tab_container .button_wrap:before{
   content:'';
   position: absolute;
@@ -193,7 +141,6 @@ table {
   background: #05c9a8;
   transition: 0.2s left ease-in-out;
 }
-
 .focus_0:before{
   left:0%; 
 }
@@ -204,9 +151,10 @@ table {
   left:66.66%; 
 }
 
-/* slider_container */
+
+/*--------------- slider_container ---------------*/
 .slider_container{
-  padding: 50px 0;
+  margin-bottom:100px;
 }
 .slider_container .inner{
   padding: 0 6px;
@@ -251,18 +199,28 @@ table {
   height:12px;
   font-size:0;
   background: #d6d4d4;
-
+}
+.progress span.active{
+  background: #05c9a8;
+}
+.progress_bar{
+  position:absolute;
+  background: #05c9a8;
+  height: 3px;
+  left:0;
+  transform:translateY(-50%);
+  border-radius: 0;
 }
 .progress .controller{
   position: absolute;
   font-size:0;
-  width: 15px;
-  border: 5px solid #05c9a8;
-  height:15px;
-  background: #fff;
+  width: 20px;
+  border: 3px solid #fff;
+  height:20px;
+  background: #05c9a8;
   left:0%;
+  box-shadow: -1px 1px 0px #dddddd;
 }
-
 .spot_25{
   left:25%;
 }
@@ -275,7 +233,6 @@ table {
 .spot_100{
   left: 100%;
 }
-
 .percent{
   width:356px;
   margin : 0 -9px;
@@ -294,13 +251,63 @@ table {
    color:#7c7b7b;
    cursor: pointer;
 }
-
 .percent .spot_25{
   transform: translateX(-10%);
 } 
 .percent .spot_75{
   transform: translateX(10%);
 } 
+
+
+/*---------------  Input --------------- */
+.login_form .input-box{
+  margin-bottom:20px;
+  width:250px;
+}
+.login_form input{
+  width:100%; 
+  padding:10px 40px 10px 10px; 
+  border:1px solid #292828; 
+  border-radius: 3px;
+}
+.login_form label{
+ font-size:14px;
+ padding-bottom:5px;
+ display:block;
+}
+.input-box{
+  position: relative;
+}
+.input-box .icon{
+  position: absolute;
+  top:50%;
+  transform:translateY(-50%);
+  right: 20px;
+  font-size:0;
+
+  background: no-repeat center/100%;
+}
+.input-box .icon_check{
+  opacity: 0.4;
+  width:15px;
+  height:15px;
+  background-image: url('./images/circle-check-solid.svg');
+}
+.input-box .icon_check.checked{
+  opacity: 1
+}
+.input-box .icon_view{
+  width:20px;
+  height:20px;
+  background-image: url('./images/eye-slash-solid.svg');
+}
+.input-box .icon_view.view{
+  background-image: url('./images/eye-solid.svg');
+}
+
+
+
+
 
 
 

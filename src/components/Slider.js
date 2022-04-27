@@ -5,26 +5,53 @@ class Slider extends Component {
     initialMousePosX :0,
     offsetX :0,
     percentage : 1,
-    controllerXpos : 0,
   };
 
-  isDragging = (e) => {
+  componentDidMount() {
+    document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', this.isMoving);
+    });
+  }
+
+  isMouseDown = (e) => {
     this.setState({initialMousePosX : e.clientX - this.state.offsetX});
     document.addEventListener('mousemove', this.isMoving); 
   }
   isMoving = (e) => {
-    console.log(e.clientX);
-    this.setState({offsetX : e.clientX - this.state.initialMousePosX});
+    let progressBarWidth = document.querySelector('.progress').clientWidth;
+    let diffX = e.clientX - this.state.initialMousePosX; 
+    if(diffX >= progressBarWidth) diffX = progressBarWidth;
+    else if(diffX <= 0) diffX = 1;
     
+    this.setState({offsetX : diffX});
+    this.setState({percentage : Math.ceil(this.state.offsetX / progressBarWidth * 100)});
+
   }
-  // document.addEventListener('mouseup', () => {
-  //   document.removeEventListener('mousemove', move);
-  // })
-  // removeMoving = (e) => {
-  //   console.log('끝');
-  // }
 
-
+  onClickPercent = (e) => {
+    if(e.target === e.currentTarget) return;
+    let posX;
+    switch (e.target.className) {
+      case 'spot_1':
+        posX = 0;
+        break;
+      case 'spot_25':
+        posX = 85;
+        break;
+      case 'spot_50':
+        posX = 170;
+        break;
+      case 'spot_75':
+        posX = 255;
+        break;
+      case 'spot_100':
+        posX = 340;
+        break;
+    }
+    const percent = e.target.innerText.replace('%', '');
+    this.setState({percentage : percent});
+    this.setState({offsetX : posX});
+  }
 
   render(){
     return (
@@ -34,19 +61,22 @@ class Slider extends Component {
         </div>
         <div className="inner">
           <div className="progress">
-            <span className="spot_1">1%</span>
-            <span className="spot_25">25%</span>
-            <span className="spot_50">50%</span>
-            <span className="spot_75">75%</span>
-            <span className="spot_100">100%</span>
-            <button className="controller" onMouseDown={this.isDragging}>move</button>
+            {
+              [1,25,50,75,100].map((v) => 
+              <span key={v.toString()} className={`spot_${v} ${this.state.percentage >= v ? 'active' : ''}`}>{`${v}%`}</span>)
+            }
+            <div 
+              className="progress_bar" 
+              style={{ width: this.state.percentage + '%'}}
+            ></div>
+            <button 
+              className="controller" 
+              onMouseDown={this.isMouseDown} 
+              style={{ left: this.state.percentage + '%'}}
+            >move</button>
           </div>
-          <div className="percent">
-            <span className="spot_1">1%</span>
-            <span className="spot_25">25%</span>
-            <span className="spot_50">50%</span>
-            <span className="spot_75">75%</span>
-            <span className="spot_100">100%</span>
+          <div className="percent" onClick={this.onClickPercent}>
+            {[1,25,50,75,100].map(v => <span key={v.toString()} className={`spot_${v}`}>{`${v}%`}</span>)}
           </div>
         </div>
       </div>
