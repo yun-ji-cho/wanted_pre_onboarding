@@ -1,7 +1,7 @@
 import React from 'react';
-const { useState, useRef, memo } = React;
+const { useState, useRef } = React;
 
-const Input = memo(() => {
+const Input = () => {
   const [loginValue, setLoginValue]= useState({
     email:'',
     password: ''
@@ -14,23 +14,21 @@ const Input = memo(() => {
   });
   const inputRef = useRef(null);
 
-  const onChangeInput = (e) => {
-    if(e.target.id === 'email') {
-      setLoginValue({
-        email : e.target.value,
-        password: loginValue.password,
-      });
+  const onChangeEmail = (e) => {
+    setLoginValue({
+      email : e.target.value,
+      password: loginValue.password,
+    });
 
-      if(validateEmail(e.target.value)) setEmailCheck('checked');
-      else setEmailCheck('');
+    if(validateEmail(e.target.value)) setEmailCheck('checked');
+    else setEmailCheck('');
+  };
 
-
-    }else if(e.target.id === 'password'){
-      setLoginValue({
-        email : loginValue.email,
-        password: e.target.value,
-      });
-    }
+  const onChangePssword = (e) => {
+    setLoginValue({
+      email : loginValue.email,
+      password: e.target.value,
+    });
   };
 
   const validateEmail = (email) => {
@@ -62,7 +60,7 @@ const Input = memo(() => {
           id="email" 
           ref={inputRef} 
           value={loginValue.email} 
-          onChange={onChangeInput} 
+          onChange={onChangeEmail} 
           placeholder="E-mail"
         />
         <span className={`icon icon_check ${emailCheck}`}>check</span>
@@ -75,7 +73,7 @@ const Input = memo(() => {
           ref={inputRef} 
           value={loginValue.password} 
           type={passwordView.type}
-          onChange={onChangeInput} 
+          onChange={onChangePssword} 
           placeholder="Password"
         />
         <button 
@@ -87,6 +85,6 @@ const Input = memo(() => {
     </form>
     
   )
-});
+};
 
 export default Input;
